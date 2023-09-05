@@ -1,0 +1,8 @@
+.search {
+    width: 100vw;
+    height: 40vh;
+    background-image: url("../common/images/books.jpg");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center;
+}
