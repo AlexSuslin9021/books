@@ -8,6 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .input{
@@ -16,8 +17,50 @@
     border: none;
     height: 40px;
     outline: none;
+    margin-bottom: 30px;
 }
 .input:focus {
+    border: 2px solid lightgray;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.button{
+    border: none;
+    padding: 10px;
+    color: white;
+    background: #419bc0;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+.select-container {
+
+}
+
+.select-label {
+    color :white;
+    margin-right: 10px;
+}
+
+.select {
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    padding: 5px;
+    outline: none;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+}
+
+
+.select option {
+    background-color: white;
+    color: #333;
+}
+
+.select:focus {
     border: 2px solid lightgray;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
