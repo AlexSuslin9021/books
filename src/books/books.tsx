@@ -20,7 +20,7 @@ export const BookCard:FC<BookCardType> = ({ coverImage, title, category, authors
     );
 };
 
-type BookCardType = {
+export type BookCardType = {
     coverImage: string,
     title: string,
     category: string,
