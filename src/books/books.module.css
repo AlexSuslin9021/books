@@ -1,0 +1,40 @@
+/* BookCard.module.css */
+
+.bookCard {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    min-height: 300px;
+}
+
+.coverImage {
+    max-width: 100%;
+
+    margin-bottom: 10px;
+    width: 200px;
+    height: 250px;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.category {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.authors {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+
