@@ -4,12 +4,13 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
-    margin: 10px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 300px;
     min-height: 300px;
+    margin: 40px;
 }
 
 .coverImage {

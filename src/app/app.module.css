@@ -2,6 +2,6 @@
 .bookContainer {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around; /* Распределение по центру */
+    justify-content: space-between; /* Распределение по центру */
     gap: 20px; /* Расстояние между книгами */
 }
