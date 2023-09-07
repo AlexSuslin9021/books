@@ -1,18 +1,40 @@
-import React, {FC} from 'react';
-import s from './BookCard.module.css';
+import React, { FC } from 'react';
+import s from './books.module.css';
 
-export const BookCard:FC<BookCardType> = ({ coverImage, title, category, authors }) => {
+export type BookCardType = {
+    id: string;
+    volumeInfo: {
+        title: string;
+        infoLink: string;
+        description: string;
+        imageLinks: {
+            smallThumbnail: string;
+            thumbnail: string;
+        };
+        authors: string[];
+        categories: string[]; // Исправлено на "categories"
+    };
+};
 
+export const BookCard: FC<BookCardType> = ({ id, volumeInfo }) => {
     return (
         <div className={s.bookCard}>
-            <img src={coverImage} alt={title} className={s.coverImage} />
+            <img
+                src={volumeInfo.imageLinks.smallThumbnail}
+                alt={volumeInfo.title}
+                className={s.coverImage}
+            />
 
             <div className={s.bookInfo}>
-                <h2 className={s.title}>{title || 'Название не указано'}</h2>
-                <p className={s.category}>{category ? `Категория: ${category}` : 'Категория не указана'}</p>
+                <h2 className={s.title}>{volumeInfo.title || 'Название не указано'}</h2>
+                <p className={s.category}>
+                    {volumeInfo.categories && volumeInfo.categories.length > 0
+                        ? `Категория: ${volumeInfo.categories.join(', ')}`
+                        : 'Категория не указана'}
+                </p>
                 <p className={s.authors}>
-                    {authors && authors.length > 0
-                        ? `Авторы: ${authors.join(', ')}`
+                    {volumeInfo.authors && volumeInfo.authors.length > 0
+                        ? `Авторы: ${volumeInfo.authors.join(', ')}`
                         : 'Авторы не указаны'}
                 </p>
             </div>
@@ -20,11 +42,5 @@ export const BookCard:FC<BookCardType> = ({ coverImage, title, category, authors
     );
 };
 
-export type BookCardType = {
-    coverImage: string,
-    title: string,
-    category: string,
-    authors: string[],
-};
 
 

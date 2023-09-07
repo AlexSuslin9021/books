@@ -4,15 +4,15 @@ import {thunkTryCatch} from "../common/utils/thunkTryCatch";
 import {BookCardType} from "../books/books";
 import axios from "axios";
 
-const initialState: BookCardType[] = [];
+const initialState: initialStateType = {} as initialStateType;
 
 const slice = createSlice({
     name: "search",
     initialState: initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(searchBooks.fulfilled, (state, action:PayloadAction<BookCardType[]>) => {
-            return action.payload
+        builder.addCase(searchBooks.fulfilled, (state, action:PayloadAction<initialStateType>) => {
+            state.items=action.payload.items
         });
     }
 });
@@ -33,3 +33,6 @@ export const searchBooks = createAppAsyncThunk(
 
 
 export const books = slice.reducer;
+type initialStateType={
+    items:BookCardType[]
+}
