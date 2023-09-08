@@ -6,7 +6,7 @@ import {BookCard} from "../books/books";
 
 function App() {
     const books = useAppSelector(state => state.books)
-    console.log(books)
+    console.log(books.items)
     return (
         <div className={s.app}>
             <Search/>

@@ -16,14 +16,14 @@ const slice = createSlice({
 
         setSearchTerm(state, action: PayloadAction<string>){
             state.searchTerm=action.payload
-            console.log(state.searchTerm)
+
         },
         setCategoryFilter(state, action: PayloadAction<string>) {
             state.items = state.items.filter(book => {
 
                 return book.volumeInfo.categories && book.volumeInfo.categories.includes(action.payload);
             });
-            console.log(action.payload)
+
         },
     },
     extraReducers: (builder) => {
@@ -42,7 +42,7 @@ export const searchBooks = createAppAsyncThunk(
             let res = await axios.get(
                 `https://www.googleapis.com/books/v1/volumes?q=${arg}`
             );
-            console.log(res.data)
+
             return res.data;
         });
     }
@@ -68,6 +68,6 @@ type BookCardType = {
             thumbnail: string;
         };
         authors: string[];
-        categories: string[]; // Исправлено на "categories"
+        categories: string[];
     };
 };

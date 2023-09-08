@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent } from 'react';
 import s from '../search.module.css';
 import { useAppDispatch } from "../../common/hooks/useAppDispatch";
 import {searchBooks, setSearchTerm} from "../search.slice";
@@ -12,11 +12,11 @@ export const Input = () => {
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(setSearchTerm(e.currentTarget.value));
-        console.log(setSearchTerm)
+
     };
 
     const onClickHandler = () => {
-        console.log(searchTerm)
+
         dispatch(searchBooks(searchTerm));
     };
     const onKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {

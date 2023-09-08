@@ -1,16 +1,23 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import s from '../search.module.css';
-import { useAppDispatch } from "../../common/hooks/useAppDispatch";
-import {setCategoryFilter} from "../search.slice";
+import {useAppDispatch} from "../../common/hooks/useAppDispatch";
+import {searchBooks, setCategoryFilter} from "../search.slice";
+import {useAppSelector} from "../../common/hooks/useAppSelector";
 
 
 export const Select = () => {
     const dispatch = useAppDispatch();
-    const [selectedCategory, setSelectedCategory] = useState('all');
+    const searchTerm = useAppSelector(state => state.books.searchTerm)
+    const [selectedCategory, setSelectedCategory] = useState('All');
     const handleCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
         const selectedValue = event.target.value;
         setSelectedCategory(selectedValue);
-        dispatch(setCategoryFilter(selectedValue));
+
+        if (selectedValue === 'All') {
+            dispatch(searchBooks(searchTerm));
+        } else {
+            dispatch(setCategoryFilter(selectedValue));
+        }
 
     };
 

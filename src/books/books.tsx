@@ -30,7 +30,7 @@ export const BookCard: FC<BookCardType> = ({ id, volumeInfo }) => {
                 <p className={s.category}>
                     {volumeInfo.categories && volumeInfo.categories.length > 0
                         ? `Категория: ${volumeInfo.categories.join(', ')}`
-                        : 'Категория не указана'}
+                        : ''}
                 </p>
                 <p className={s.authors}>
                     {volumeInfo.authors && volumeInfo.authors.length > 0
