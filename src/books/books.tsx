@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import s from './books.module.css';
+import {useNavigate} from "react-router-dom";
 
 export type BookCardType = {
     id: string;
@@ -17,8 +18,12 @@ export type BookCardType = {
 };
 
 export const BookCard: FC<BookCardType> = ({ id, volumeInfo }) => {
+   const navigate=useNavigate()
+    const onClickBook = (id:string)=>{
+        navigate(`/book/${id}`)
+   }
     return (
-        <div className={s.bookCard}>
+        <div className={s.bookCard} onClick={()=>onClickBook(id)}>
             <img
                 src={volumeInfo.imageLinks.smallThumbnail}
                 alt={volumeInfo.title}

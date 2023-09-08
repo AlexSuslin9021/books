@@ -11,7 +11,7 @@ export const BookPage: React.FC = () => {
     );
 
     if (!book) {
-        // Обработка случая, когда книга с указанным id не найдена
+
         return <div>Книга не найдена</div>;
     }
 
