@@ -10,7 +10,6 @@ function App() {
     return (
         <div className={s.app}>
             <Search/>
-
             <div className={s.bookContainer} >{Object.keys(books).length === 0 ? '' : books.items.map(b => <BookCard key={b.id}
                                                                                         id={b.id}
                                                                                         volumeInfo={b.volumeInfo}

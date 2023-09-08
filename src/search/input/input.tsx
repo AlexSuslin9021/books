@@ -16,6 +16,11 @@ export const Input = () => {
         console.log(searchTerm)
         dispatch(searchBooks(searchTerm));
     };
+    const onKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            dispatch(searchBooks(searchTerm));
+        }
+    };
 
     return (
         <div>
@@ -25,6 +30,7 @@ export const Input = () => {
                 type="text"
                 value={searchTerm}
                 placeholder="Введите запрос"
+                onKeyPress={onKeyPressHandler}
             />
             <button onClick={onClickHandler} className={s.button}>
                 Поиск
