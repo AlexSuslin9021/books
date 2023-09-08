@@ -17,7 +17,7 @@ export type BookCardType = {
     };
 };
 
-export const BookCard: FC<BookCardType> = ({ id, volumeInfo }) => {
+export const BookCard: FC<BookCardType> = ({ id, volumeInfo}) => {
    const navigate=useNavigate()
     const onClickBook = (id:string)=>{
         navigate(`/book/${id}`)
@@ -42,6 +42,7 @@ export const BookCard: FC<BookCardType> = ({ id, volumeInfo }) => {
                         ? `Авторы: ${volumeInfo.authors.join(', ')}`
                         : 'Авторы не указаны'}
                 </p>
+
             </div>
         </div>
     );
