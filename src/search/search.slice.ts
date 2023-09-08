@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {createAppAsyncThunk} from "../common/utils/createAppAsyncThunk";
 import {thunkTryCatch} from "../common/utils/thunkTryCatch";
-import {BookCardType} from "../books/books";
+// import {BookCardType} from "../books/books";
 import axios from "axios";
 
 const initialState: initialStateType = {} as initialStateType;
@@ -9,7 +9,11 @@ const initialState: initialStateType = {} as initialStateType;
 const slice = createSlice({
     name: "search",
     initialState: initialState,
-    reducers: {},
+    reducers: {
+        setCategoryFilter(state, action: PayloadAction<string>) {
+            state.items = state.items.filter(book => book.volumeInfo.categories.includes(action.payload));
+        },
+    },
     extraReducers: (builder) => {
         builder.addCase(searchBooks.fulfilled, (state, action:PayloadAction<initialStateType>) => {
             state.items=action.payload.items
@@ -36,3 +40,18 @@ export const books = slice.reducer;
 type initialStateType={
     items:BookCardType[]
 }
+
+type BookCardType = {
+    id: string;
+    volumeInfo: {
+        title: string;
+        infoLink: string;
+        description: string;
+        imageLinks: {
+            smallThumbnail: string;
+            thumbnail: string;
+        };
+        authors: string[];
+        categories: string[]; // Исправлено на "categories"
+    };
+};
