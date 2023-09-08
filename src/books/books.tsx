@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import s from './books.module.css';
-import {useNavigate} from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export type BookCardType = {
     id: string;
@@ -13,17 +13,22 @@ export type BookCardType = {
             thumbnail: string;
         };
         authors: string[];
-        categories: string[]; // Исправлено на "categories"
+        categories: string[];
     };
 };
 
-export const BookCard: FC<BookCardType> = ({ id, volumeInfo}) => {
-   const navigate=useNavigate()
-    const onClickBook = (id:string)=>{
-        navigate(`/book/${id}`)
-   }
+export const BookCard: FC<BookCardType> = ({ id, volumeInfo }) => {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const onClickBook = () => {
+        navigate(`/book/${id}`);
+    }
+
+    const isBookPage = location.pathname.startsWith('/book/');
+
     return (
-        <div className={s.bookCard} onClick={()=>onClickBook(id)}>
+        <div className={s.bookCard} onClick={onClickBook}>
             <img
                 src={volumeInfo.imageLinks.smallThumbnail}
                 alt={volumeInfo.title}
@@ -42,11 +47,16 @@ export const BookCard: FC<BookCardType> = ({ id, volumeInfo}) => {
                         ? `Авторы: ${volumeInfo.authors.join(', ')}`
                         : 'Авторы не указаны'}
                 </p>
-
+                {isBookPage && (
+                    <p className={s.description}>
+                        {volumeInfo.description || 'Описание не доступно'}
+                    </p>
+                )}
             </div>
         </div>
     );
 };
+
 
 
 
