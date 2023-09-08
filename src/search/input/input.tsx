@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from 'react';
 import s from '../search.module.css';
 import { useAppDispatch } from "../../common/hooks/useAppDispatch";
 import {searchBooks} from "../search.slice";
-import {useAppSelector} from "../../common/hooks/useAppSelector";
+
 
 
 export const Input = () => {

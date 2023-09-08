@@ -11,12 +11,17 @@ const slice = createSlice({
     initialState: initialState,
     reducers: {
         setCategoryFilter(state, action: PayloadAction<string>) {
-            state.items = state.items.filter(book => book.volumeInfo.categories.includes(action.payload));
+            state.items = state.items.filter(book => {
+
+                return book.volumeInfo.categories && book.volumeInfo.categories.includes(action.payload);
+            });
+            console.log(action.payload)
         },
     },
     extraReducers: (builder) => {
         builder.addCase(searchBooks.fulfilled, (state, action:PayloadAction<initialStateType>) => {
             state.items=action.payload.items
+
         });
     }
 });
@@ -37,6 +42,7 @@ export const searchBooks = createAppAsyncThunk(
 
 
 export const books = slice.reducer;
+export const setCategoryFilter = slice.actions.setCategoryFilter;
 type initialStateType={
     items:BookCardType[]
 }
