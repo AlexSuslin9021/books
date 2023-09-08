@@ -1,16 +1,18 @@
 import React, { ChangeEvent, useState } from 'react';
 import s from '../search.module.css';
 import { useAppDispatch } from "../../common/hooks/useAppDispatch";
-import {searchBooks} from "../search.slice";
+import {searchBooks, setSearchTerm} from "../search.slice";
+import {useAppSelector} from "../../common/hooks/useAppSelector";
 
 
 
 export const Input = () => {
     const dispatch = useAppDispatch();
-    const [searchTerm, setSearchTerm] = useState('');
+   const searchTerm = useAppSelector(state => state.books.searchTerm)
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setSearchTerm(e.currentTarget.value);
+        dispatch(setSearchTerm(e.currentTarget.value));
+        console.log(setSearchTerm)
     };
 
     const onClickHandler = () => {

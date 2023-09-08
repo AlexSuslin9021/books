@@ -3,13 +3,21 @@ import {createAppAsyncThunk} from "../common/utils/createAppAsyncThunk";
 import {thunkTryCatch} from "../common/utils/thunkTryCatch";
 // import {BookCardType} from "../books/books";
 import axios from "axios";
+const initialState: initialStateType = {
+    items: [],
+    searchTerm: '',
+} as initialStateType;
 
-const initialState: initialStateType = {} as initialStateType;
 
 const slice = createSlice({
     name: "search",
     initialState: initialState,
     reducers: {
+
+        setSearchTerm(state, action: PayloadAction<string>){
+            state.searchTerm=action.payload
+            console.log(state.searchTerm)
+        },
         setCategoryFilter(state, action: PayloadAction<string>) {
             state.items = state.items.filter(book => {
 
@@ -43,8 +51,10 @@ export const searchBooks = createAppAsyncThunk(
 
 export const books = slice.reducer;
 export const setCategoryFilter = slice.actions.setCategoryFilter;
+export const setSearchTerm = slice.actions.setSearchTerm;
 type initialStateType={
     items:BookCardType[]
+    searchTerm:string
 }
 
 type BookCardType = {
