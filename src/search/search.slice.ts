@@ -23,8 +23,16 @@ const slice = createSlice({
 
                 return book.volumeInfo.categories && book.volumeInfo.categories.includes(action.payload);
             });
-
         },
+        sortBooks(state) {
+            state.items = state.items.slice().sort((a, b) => {
+                if (a.volumeInfo.publishedDate && b.volumeInfo.publishedDate) {
+                    return b.volumeInfo.publishedDate.localeCompare(a.volumeInfo.publishedDate);
+                }
+                return 0;
+            });
+        },
+
     },
     extraReducers: (builder) => {
         builder.addCase(searchBooks.fulfilled, (state, action:PayloadAction<initialStateType>) => {
@@ -51,6 +59,7 @@ export const searchBooks = createAppAsyncThunk(
 
 export const books = slice.reducer;
 export const setCategoryFilter = slice.actions.setCategoryFilter;
+export const sortBooks = slice.actions.sortBooks;
 export const setSearchTerm = slice.actions.setSearchTerm;
 type initialStateType={
     items:BookCardType[]
@@ -63,6 +72,7 @@ type BookCardType = {
         title: string;
         infoLink: string;
         description: string;
+        publishedDate?:string
         imageLinks: {
             smallThumbnail: string;
             thumbnail: string;

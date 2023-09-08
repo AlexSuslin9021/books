@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useState} from 'react';
 import s from '../search.module.css';
 import {useAppDispatch} from "../../common/hooks/useAppDispatch";
-import {searchBooks, setCategoryFilter} from "../search.slice";
+import {searchBooks, setCategoryFilter, sortBooks} from "../search.slice";
 import {useAppSelector} from "../../common/hooks/useAppSelector";
 
 
@@ -23,6 +23,11 @@ export const Select = () => {
 
     const handleSortChange = (event: ChangeEvent<HTMLSelectElement>) => {
         setSelectedSort(event.target.value);
+        if (event.target.value === 'relevance') {
+            dispatch(searchBooks(searchTerm));
+        } else {
+            dispatch(sortBooks());
+        }
     };
 
     const [selectedSort, setSelectedSort] = useState('relevance');
