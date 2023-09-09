@@ -2,20 +2,6 @@ import React, { FC } from 'react';
 import s from './books.module.css';
 import { useNavigate, useLocation } from "react-router-dom";
 
-export type BookCardType = {
-    id: string;
-    volumeInfo: {
-        title: string;
-        infoLink: string;
-        description: string;
-        imageLinks: {
-            smallThumbnail: string;
-            thumbnail: string;
-        };
-        authors: string[];
-        categories: string[];
-    };
-};
 
 export const BookCard: FC<BookCardType> = ({ id, volumeInfo }) => {
     const navigate = useNavigate();
@@ -57,6 +43,19 @@ export const BookCard: FC<BookCardType> = ({ id, volumeInfo }) => {
     );
 };
 
-
+export type BookCardType = {
+    id: string;
+    volumeInfo: {
+        title: string;
+        infoLink: string;
+        description: string;
+        imageLinks: {
+            smallThumbnail: string;
+            thumbnail: string;
+        };
+        authors: string[];
+        categories: string[];
+    };
+};
 
 

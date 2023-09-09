@@ -4,7 +4,6 @@ import {useAppDispatch} from "../../common/hooks/useAppDispatch";
 import {searchBooks, setCategoryFilter, sortBooks} from "../search.slice";
 import {useAppSelector} from "../../common/hooks/useAppSelector";
 
-
 export const Select = () => {
     const dispatch = useAppDispatch();
     const searchTerm = useAppSelector(state => state.books.searchTerm)
