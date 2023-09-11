@@ -21,7 +21,7 @@ export const BookPage: React.FC = () => {
     }
 
     return (
-        <div>
+        <div className={s.booksPage}>
             <button className={s.button} onClick={onClickButton}>← Вернуться назад</button>
             <h1>Детальная информация о книге</h1>
             <BookCard id={book.id} volumeInfo={book.volumeInfo} />
